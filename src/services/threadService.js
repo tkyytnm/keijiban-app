@@ -1,5 +1,5 @@
-const Thread = require("../models/thread.js");
-const threadModelInstance = new Thread();
+const ThreadModel = require("../models/thread.js");
+const threadModelInstance = new ThreadModel();
 
 module.exports = class ThreadService {
   async listThreads() {
@@ -7,7 +7,7 @@ module.exports = class ThreadService {
       const res = await threadModelInstance.getThreads();
       return res;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 
@@ -16,7 +16,7 @@ module.exports = class ThreadService {
       const res = await threadModelInstance.insertThread(data);
       return res;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 
@@ -25,7 +25,7 @@ module.exports = class ThreadService {
       const res = await threadModelInstance.deleteThread(id);
       return res;
     } catch (err) {
-      return err;
+      throw err;
     }
   }
 };
