@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const AuthService = require("../services/authService.js");
 const authServiceInstance = new AuthService();
+const passport = require("passport");
 
-router.post("/", async (req, res, next) => {
+router.post("/register", async (req, res, next) => {
   // create new user
   const data = req.body;
   try {
@@ -14,7 +15,13 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-
-
+router.post(
+  "/login",
+  passport.authenticate("local", { failureMessage: true }),
+  (req, res, next) => {
+    // login
+    res.send(req.user);
+  }
+);
 
 module.exports = router;
