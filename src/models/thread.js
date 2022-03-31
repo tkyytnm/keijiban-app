@@ -10,7 +10,7 @@ module.exports = class Thread {
       if (res.rows?.length) {
         return res.rows;
       }
-      return null;
+      return {};
     } catch (err) {
       throw err;
     }
@@ -34,7 +34,6 @@ module.exports = class Thread {
   }
 
   async deleteThread(id) {
-    console.log(id);
     const text = `DELETE FROM threads WHERE id=$1 RETURNING *`;
     const values = [id];
 
