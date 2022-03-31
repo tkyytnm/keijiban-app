@@ -1,5 +1,7 @@
 const UserModel = require("../models/user.js");
 const userModelInstance = new UserModel();
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 module.exports = class AuthService {
   async createUser(data) {
@@ -8,10 +10,17 @@ module.exports = class AuthService {
       const user = await userModelInstance.findUserByEmail(email);
 
       if (user) {
-        throw new Error("The email is already exists.");
+        throw new Error("The email already exists.");
       }
 
-      const res = await userModelInstance.insertUser(data);
+      // bcrypt
+      const hash = await bcrypt.hash(password, saltRounds);
+
+      const res = await userModelInstance.insertUser({
+        ...data,
+        password: hash,
+      });
+
       return res;
     } catch (err) {
       throw err;

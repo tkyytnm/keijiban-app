@@ -1,7 +1,7 @@
-const thread = require("./thread.js");
-const comment = require('./comment.js');
-const user = require('./user.js');
-const auth = require('./auth.js');
+const thread = require("../routes/thread.js");
+const comment = require('../routes/comment.js');
+const user = require('../routes/user.js');
+const auth = require('../routes/auth.js');
 
 module.exports = (app) => {
   app.get("/", (req, res) => {

@@ -4,6 +4,7 @@ const UserModel = require("../models/user.js");
 const UserModelInstance = new UserModel();
 const session = require("express-session");
 const { secret } = require("../configs/config.js").session;
+const bcrypt = require("bcrypt");
 
 module.exports = (app) => {
   app.use(
@@ -27,7 +28,10 @@ module.exports = (app) => {
           });
         }
 
-        if (password !== user.password) {
+        // bcrypt
+        const match = await bcrypt.compare(password, user.password);
+
+        if (!match) {
           return cb(null, false, {
             message: "Incorrect username or password.",
           });
