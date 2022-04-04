@@ -1,10 +1,12 @@
 const ThreadModel = require("../models/thread.js");
-const threadModelInstance = new ThreadModel();
+const ThreadModelInstance = new ThreadModel();
+const CommentModel = require("../models/comment.js");
+const CommentModelInstance = new CommentModel();
 
 module.exports = class ThreadService {
   async listThreads() {
     try {
-      const res = await threadModelInstance.getThreads();
+      const res = await ThreadModelInstance.getThreads();
       return res;
     } catch (err) {
       throw err;
@@ -13,7 +15,7 @@ module.exports = class ThreadService {
 
   async createThread(data) {
     try {
-      const res = await threadModelInstance.insertThread(data);
+      const res = await ThreadModelInstance.insertThread(data);
       return res;
     } catch (err) {
       throw err;
@@ -22,7 +24,8 @@ module.exports = class ThreadService {
 
   async dropThread(id) {
     try {
-      const res = await threadModelInstance.deleteThread(id);
+      await CommentModelInstance.deleteCommentsByThreadId(id);
+      const res = await ThreadModelInstance.deleteThread(id);
       return res;
     } catch (err) {
       throw err;
