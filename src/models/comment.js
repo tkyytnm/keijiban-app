@@ -32,7 +32,7 @@ module.exports = class Comment {
         return res.rows;
       }
 
-      return {};
+      return [];
     } catch (err) {
       throw err;
     }
@@ -49,6 +49,38 @@ module.exports = class Comment {
         return res.rows[0];
       }
       return null;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async deleteCommentsByThreadId(thread_id) {
+    // When deleting parent thread
+    try {
+      const text = `DELETE FROM comments WHERE thread_id=$1 RETURNING *`;
+      const values = [thread_id];
+      const res = await db.query(text, values);
+
+      if (res.rows?.length) {
+        return res.rows;
+      }
+      return [];
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async deleteCommentsByUserId(user_id) {
+    // When deleting parent user
+    try {
+      const text = `DELETE FROM comments WHERE user_id=$1 RETURNING *`;
+      const values = [user_id];
+      const res = await db.query(text, values);
+
+      if (res.rows?.length) {
+        return res.rows;
+      }
+      return [];
     } catch (err) {
       throw err;
     }

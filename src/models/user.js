@@ -19,7 +19,7 @@ module.exports = class User {
 
   async updateUser(data) {
     const { id, username, email } = data;
-    const text = `UPDATE users SET username=$2, email=$3, WHERE id=$1`;
+    const text = `UPDATE users SET username=$2, email=$3, WHERE id=$1 RETURNING *`;
     const values = [id, username, email];
     try {
       const res = await db.query(text, values);
@@ -33,7 +33,7 @@ module.exports = class User {
   }
 
   async updateUserPassword(hashedPassword) {
-    const text = `UPDATE users SET password=$2 WHERE id=$1`;
+    const text = `UPDATE users SET password=$2 WHERE id=$1 RETURNING *`;
     const values = [hashedPassword];
     try {
       const res = await db.query(text, values);
@@ -47,7 +47,7 @@ module.exports = class User {
   }
 
   async deleteUser(id) {
-    const text = `DELETE FROM users WHERE id=$1`;
+    const text = `DELETE FROM users WHERE id=$1 RETURNING *`;
     const values = [id];
     try {
       const res = await db.query(text, values);

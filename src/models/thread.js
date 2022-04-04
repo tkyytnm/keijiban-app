@@ -10,7 +10,22 @@ module.exports = class Thread {
       if (res.rows?.length) {
         return res.rows;
       }
-      return {};
+      return [];
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async getThreadsByUserId(id) {
+    const text = `SELECT * FROM threads WHERE user_id=$1`;
+    const values = [id];
+
+    try {
+      const res = await db.query(text, values);
+      if (res.rows?.length) {
+        return res.rows;
+      }
+      return [];
     } catch (err) {
       throw err;
     }
@@ -43,6 +58,22 @@ module.exports = class Thread {
         return res.rows[0];
       }
       return null;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async deleteThreadsByUserId(user_id) {
+    // use when deleting parent user
+    const text = `DELETE FROM threads WHERE user_id=$1 RETURNING *`;
+    const values = [user_id];
+
+    try {
+      const res = await db.query(text, values);
+      if (res.rows?.length) {
+        return res.rows;
+      }
+      return [];
     } catch (err) {
       throw err;
     }
