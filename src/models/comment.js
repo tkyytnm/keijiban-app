@@ -40,7 +40,7 @@ module.exports = class Comment {
 
   async deleteComment(id) {
     try {
-      const text = `DELETE FROM comments WHERE id=$1 RETUNING *`;
+      const text = `DELETE FROM comments WHERE id=$1 RETURNING *`;
       const values = [id];
 
       const res = await db.query(text, values);

@@ -6,14 +6,13 @@ const CommentServiceInstance = new CommentService();
 router.get("/:thread_id", async (req, res, next) => {
   const thread_id = req.params.thread_id;
   try {
-    const response = await CommentServiceInstance.getCommentsByThreadId(
+    const response = await CommentServiceInstance.listComment(
       thread_id
     );
     res.send(response);
   } catch (err) {
     next(err);
   }
-  res.send("Comment List");
 });
 
 router.post("/", async (req, res, next) => {
