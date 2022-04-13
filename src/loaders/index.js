@@ -2,7 +2,8 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const passportLoader = require("./passportLoader.js");
-const routesLoader = require('./routesLoader.js');
+const routesLoader = require("./routesLoader.js");
+const swaggerLoader = require("./swaggerLoader.js");
 
 module.exports = (app) => {
   app.use(morgan("dev"));
@@ -12,4 +13,5 @@ module.exports = (app) => {
 
   passportLoader(app);
   routesLoader(app);
+  swaggerLoader(app);
 };

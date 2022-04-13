@@ -1,0 +1,312 @@
+openapi: 3.0.0
+info:
+  title: Keijiban API
+  description: Incredible Keijiban!
+  version: 0.0.1
+servers:
+  - url: http://localhost
+    description: For development.
+paths:
+  /api/auth/register:
+    post:
+      summary: Create a user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "201":
+          description: Created and return a JSON of user data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+                  created_at:
+                    type: string
+        "409":
+          description: email already exists.
+        default:
+          description: Unexpected error.
+  /api/auth/login:
+    post:
+      summary: Login a user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: Logged in and return the user data object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+                  crated_at:
+                    type: string
+          default:
+            description: Unexpected error.
+  /api/user/{id}:
+    delete:
+      summary: Deletes a user by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the user to delete.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        "200":
+          description: A user object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+                  crated_at:
+                    type: string
+        default:
+          description: Unexpected error.
+  /api/thread:
+    get:
+      summary: Returns threads.
+      responses:
+        "200":
+          description: Array of thread object.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int64
+                      example: 4
+                    title:
+                      type: string
+                    user_id:
+                      type: integer
+                      format: int64
+                      example: 10
+                    created_at:
+                      type: string
+        default:
+          description: Unexpected error.
+    post:
+      summary: Create a thread.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                user_id:
+                  type: integer
+                  format: int64
+                  example: 10
+      responses:
+        '201':
+          description: A thread object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    example: 4
+                  title:
+                    type: string
+                  user_id:
+                    type: integer
+                    format: int64
+                    example: 10
+                  created_at:
+                    type: string
+        default:
+          description: Unexpected error.
+  /api/thread/{id}:
+    delete:
+      summary: Delete a thread.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Thread ID to delete
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: A thread object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    example: 4
+                  title:
+                    type: string
+                  user_id:
+                    type: integer
+                    format: int64
+                    example: 10
+                  created_at:
+                    type: string
+        default:
+          description: Unexpected error.
+
+  /api/comment/{thread_id}:
+    get:
+      summary: Returns comment by thread ID.
+      parameters:
+        - name: thread_id
+          in: path
+          required: true
+          description: Thread ID of comments belonging to.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Array of comment objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    body:
+                      type: string
+                    thread_id:
+                      type: integer
+                    user_id:
+                      type: integer
+                    comment_num:
+                      type: integer
+                    created_at:
+                      type: string
+  /api/comment:
+    post:
+      summary: Create a comment.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+                thread_id:
+                  type: integer
+                user_id:
+                  type: integer
+      responses:
+        '201':
+          description: Created and return a comment object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  body:
+                    type: string
+                  thread_id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  comment_num:
+                    type: integer
+                  created_at:
+                    type: string
+        default:
+          description: Unexpected error
+  /api/comment/{id}:
+    delete:
+      summary: Delete a comment by ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID for a deleting comment.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        '200':
+          description: Deleted and return a comment object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  body:
+                    type: string
+                  thread_id:
+                    type: integer
+                  user_id:
+                    type: integer
+                  comment_num:
+                    type: integer
+                  created_at:
+                    type: string
+        default:
+          description: Unexpected error.
