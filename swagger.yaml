@@ -132,6 +132,40 @@ paths:
                       type: string
         default:
           description: Unexpected error.
+  /api/thread/{thread_id}:
+    get:
+      summary: Returns a thread.
+      parameters:
+        - name: thread_id
+          in: path
+          required: true
+          description: Thread id.
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        "200":
+          description: Thread object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    example: 4
+                  title:
+                    type: string
+                  user_id:
+                    type: integer
+                    format: int64
+                    example: 10
+                  created_at:
+                    type: string
+        default:
+          description: Unexpected error.
     post:
       summary: Create a thread.
       requestBody:

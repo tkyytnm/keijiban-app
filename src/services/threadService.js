@@ -13,6 +13,15 @@ module.exports = class ThreadService {
     }
   }
 
+  async getThread(id) {
+    try {
+      const res = await ThreadModelInstance.getThreadById(id);
+      return res;
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async createThread(data) {
     try {
       const res = await ThreadModelInstance.insertThread(data);

@@ -16,6 +16,21 @@ module.exports = class Thread {
     }
   }
 
+  async getThreadById(id) {
+    const text = `SELECT * FROM threads WHERE id=$1`;
+    const values = [id];
+
+    try {
+      const res = await db.query(text, values);
+      if (res.rows?.length) {
+        return res.rows[0];
+      }
+      return null;
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async getThreadsByUserId(id) {
     const text = `SELECT * FROM threads WHERE user_id=$1`;
     const values = [id];
