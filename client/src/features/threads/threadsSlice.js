@@ -35,3 +35,4 @@ const threadsSlice = createSlice({
 
 export default threadsSlice.reducer;
 export const selectThreads = (state) => state.threads.threads;
+export const selectIsLoading = (state) => state.threads.isLoading;

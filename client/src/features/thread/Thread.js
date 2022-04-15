@@ -2,24 +2,25 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Comments from "../comments/Comments.js";
-import { fetchThreadById, selectThread } from "./threadSlice";
+import { fetchThreadById, selectThread, selectIsLoading } from "./threadSlice";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function Thread() {
   const params = useParams();
-  const id = params.threadId;
+  const threadId = params.threadId;
   const dispatch = useDispatch();
   const thread = useSelector(selectThread);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
-    dispatch(fetchThreadById(id));
-  }, [dispatch, id]);
-
-  console.log(thread)
+    dispatch(fetchThreadById(threadId));
+  }, [dispatch, threadId]);
 
   return (
     <>
-      <h1>{thread.title}</h1>
-      <Comments />
+      <h1>{isLoading ? <Skeleton /> : thread.title}</h1>
+      <Comments threadId={threadId} />
     </>
   );
 }

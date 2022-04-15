@@ -1,18 +1,19 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import Header from "../common/header/Header.js";
 import Threads from "../features/threads/Threads.js";
 import Thread from "../features/thread/Thread.js";
+import Login from '../features/auth/login/Login.js'
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <h1>掲示板 App</h1>
-      </header>
+      <Header />
       <section>
         <Routes>
           <Route path="/" element={<Threads />} />
-          <Route path=":threadId" element={<Thread />} />
+          <Route path="thread:threadId" element={<Thread />} />
+          <Route path="login" element={<Login />} />
         </Routes>
       </section>
     </div>
