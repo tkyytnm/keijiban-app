@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "../common/header/Header.js";
 import Threads from "../features/threads/Threads.js";
 import Thread from "../features/thread/Thread.js";
-import Login from '../features/auth/login/Login.js'
+import Login from '../features/auth/Login.js'
 
 function App() {
   return (

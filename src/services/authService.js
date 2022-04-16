@@ -21,7 +21,6 @@ module.exports = class AuthService {
         password: hash,
       });
 
-      delete res.password;
       return res;
     } catch (err) {
       throw err;

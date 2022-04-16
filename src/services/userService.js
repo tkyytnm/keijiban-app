@@ -17,7 +17,6 @@ module.exports = class UserService {
 
       await ThreadModelInstance.deleteThreadsByUserId(id);
       const res = await UserModelInstance.deleteUser(id);
-      delete res.password;
       return res;
     } catch (err) {
       throw err;
