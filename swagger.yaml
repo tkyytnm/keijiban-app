@@ -75,6 +75,23 @@ paths:
                     type: string
           default:
             description: Unexpected error.
+  /api/auth/logout:
+    post:
+      summary: Remove the req.user property and clear the login session.
+      requestBody:
+        required: false
+      responses:
+        '200':
+          description: Logged out.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        default:
+          description: Unexpected error
   /api/user/{id}:
     delete:
       summary: Deletes a user by ID.

@@ -15,6 +15,14 @@ export const sendLoginData = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk("auth/logout", async () => {
+  const response = await fetch("/api/auth/logout", {
+    method: "POST",
+  });
+  const body = response.json();
+  return body;
+});
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -33,6 +41,18 @@ const authSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(sendLoginData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isRejected = true;
+      });
+    builder
+      .addCase(logout.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = {};
+      })
+      .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
         state.isRejected = true;
       });

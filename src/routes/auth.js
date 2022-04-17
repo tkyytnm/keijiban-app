@@ -24,4 +24,9 @@ router.post(
   }
 );
 
+router.post("/logout", (req, res) => {
+  req.logout();
+  res.send({ message: "Logged out." });
+});
+
 module.exports = router;
