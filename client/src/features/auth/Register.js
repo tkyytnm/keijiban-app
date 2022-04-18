@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { sendRegisterData } from "./authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { sendRegisterData, selectIsLoading } from "./authSlice";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,13 +19,13 @@ function Register() {
         email,
         password,
       })
-    );
+    ).then(navigate("/"));
   };
 
   return (
     <>
       <h1>Register</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username</label>
           <input
@@ -54,7 +57,7 @@ function Register() {
           />
         </div>
         <div>
-          <input type="submit" value="Register" onClick={handleSubmit} />
+          <button disabled={isLoading}>新規登録</button>
         </div>
       </form>
     </>

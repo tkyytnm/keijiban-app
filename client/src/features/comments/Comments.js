@@ -1,4 +1,4 @@
-import { useEffect, } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectComments,
@@ -15,8 +15,8 @@ function Comments({ threadId }) {
 
   useEffect(() => {
     dispatch(fetchCommentsByThread(threadId));
-    
   }, [dispatch, threadId]);
+
 
   if (isLoading) {
     return <Skeleton count={10} />;

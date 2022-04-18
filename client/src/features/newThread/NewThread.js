@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { sendThreadData } from "./newThreadSlice";
+import { sendThreadData, selectIsLoading } from "./newThreadSlice";
 import { selectUser } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,7 @@ function NewThread() {
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
+  const isLoading = useSelector(selectIsLoading);
   const [title, setTitle] = useState("");
   const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ function NewThread() {
           />
         </div>
         <div>
-          <input type="submit" value="作成" />
+          <button disabled={isLoading}>作成</button>
         </div>
       </form>
     </>
