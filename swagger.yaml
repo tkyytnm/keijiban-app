@@ -147,6 +147,8 @@ paths:
                       example: 10
                     created_at:
                       type: string
+                    username:
+                      type: string
         default:
           description: Unexpected error.
     post:

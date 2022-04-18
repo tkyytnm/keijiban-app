@@ -9,6 +9,16 @@ export const fetchCommentsByThread = createAsyncThunk(
   }
 );
 
+export const deleteCommentById = createAsyncThunk(
+  "comments/deleteCommentById",
+  async (id) => {
+    const response = await fetch(`/api/comment/${id}`, {
+      method: "DELETE",
+    });
+    return response.json();
+  }
+);
+
 const commentsSlice = createSlice({
   name: "comments",
   initialState: {
@@ -29,6 +39,17 @@ const commentsSlice = createSlice({
       .addCase(fetchCommentsByThread.rejected, (state, action) => {
         state.isLoading = false;
         state.isRejected = false;
+      });
+    builder
+      .addCase(deleteCommentById.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteCommentById.fulfilled, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(deleteCommentById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isRejected = true;
       });
   },
 });
