@@ -17,7 +17,6 @@ function Comments({ threadId }) {
     dispatch(fetchCommentsByThread(threadId));
   }, [dispatch, threadId]);
 
-
   if (isLoading) {
     return <Skeleton count={10} />;
   }
@@ -29,7 +28,7 @@ function Comments({ threadId }) {
         {comments.map((comment) => {
           return (
             <li key={comment.id}>
-              {comment.comment_num}: {comment.body} {comment.user_id}{" "}
+              {comment.comment_num}: {comment.body} {comment.username}{" "}
               {comment.created_at}
             </li>
           );

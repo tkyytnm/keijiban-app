@@ -23,7 +23,10 @@ module.exports = class Comment {
 
   async getCommentsByThreadId(thread_id) {
     try {
-      const text = `SELECT * FROM comments WHERE thread_id=$1`;
+      const text = `SELECT c.*, u.username
+        FROM comments c, users u
+        WHERE c.user_id = u.id
+          AND thread_id=$1`;
       const values = [thread_id];
 
       const res = await db.query(text, values);

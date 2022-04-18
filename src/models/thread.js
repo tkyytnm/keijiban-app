@@ -2,7 +2,9 @@ const db = require("../db/index.js");
 
 module.exports = class Thread {
   async getThreads() {
-    const text = `SELECT * FROM threads`;
+    const text = `SELECT t.*, u.username
+      FROM threads t, users u
+      WHERE t.user_id = u.id`;
     const values = [];
 
     try {

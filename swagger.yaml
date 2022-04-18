@@ -81,7 +81,7 @@ paths:
       requestBody:
         required: false
       responses:
-        '200':
+        "200":
           description: Logged out.
           content:
             application/json:
@@ -165,7 +165,7 @@ paths:
                   format: int64
                   example: 10
       responses:
-        '201':
+        "201":
           description: A thread object.
           content:
             application/json:
@@ -232,7 +232,7 @@ paths:
             format: int64
             minimum: 1
       responses:
-        '200':
+        "200":
           description: A thread object.
           content:
             application/json:
@@ -267,7 +267,7 @@ paths:
             format: int64
             minimum: 1
       responses:
-        '200':
+        "200":
           description: Array of comment objects.
           content:
             application/json:
@@ -288,6 +288,8 @@ paths:
                       type: integer
                     created_at:
                       type: string
+                    username:
+                      type: string
   /api/comment:
     post:
       summary: Create a comment.
@@ -305,7 +307,7 @@ paths:
                 user_id:
                   type: integer
       responses:
-        '201':
+        "201":
           description: Created and return a comment object.
           content:
             application/json:
@@ -339,7 +341,7 @@ paths:
             format: int64
             minimum: 1
       responses:
-        '200':
+        "200":
           description: Deleted and return a comment object.
           content:
             application/json:
