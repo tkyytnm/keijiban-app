@@ -8,14 +8,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const user = useSelector(selectUser);
 
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(sendLoginData({ username: email, password }));
@@ -32,7 +24,7 @@ function Login() {
             name="email"
             id="email"
             required
-            onChange={handleChangeEmail}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>
@@ -42,7 +34,7 @@ function Login() {
             name="password"
             id="password"
             required
-            onChange={handleChangePassword}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div>

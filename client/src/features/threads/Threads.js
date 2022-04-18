@@ -23,7 +23,7 @@ function Threads() {
       {threads.map((thread) => {
         return (
           <li key={thread.id}>
-            {thread.id} <Link to={"thread" + thread.id}>{thread.title}</Link>{" "}
+            {thread.id} <Link to={"thread/" + thread.id}>{thread.title}</Link>{" "}
             {thread.user_id} {thread.created_at}
           </li>
         );

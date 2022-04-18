@@ -9,7 +9,7 @@ function Menu() {
   return (
     <nav id="menu">
       <Link to="/">Home</Link>
-      <div>スレッド作成</div>
+      <Link to="new-thread">新規スレッド作成</Link>
       <Link to="login">ログイン</Link>
       <Link to="register">新規登録</Link>
       <Link to="logout">ログアウト</Link>
