@@ -21,4 +21,10 @@ describe("Test the thread path", () => {
     const response = await request(app).post("/api/thread").send(data);
     expect(response.statusCode).toBe(201);
   });
+
+  test('DELETE /api/thread/:thread_id', async () => {
+    const thread_id = 13;
+    const response = await request(app).delete(`/api/thread/${thread_id}`);
+    expect(response.statusCode).toBe(200);
+  })
 });

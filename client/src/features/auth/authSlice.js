@@ -1,5 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+export const fetchUserData = createAsyncThunk(
+  "auth/fetchUserData",
+  async (id) => {
+    const response = await fetch(`/api/user/${id}`);
+    return response.json();
+  }
+);
+
 export const sendRegisterData = createAsyncThunk(
   "auth/sendRegisterData",
   async (data) => {
@@ -80,6 +88,18 @@ const authSlice = createSlice({
         state.user = {};
       })
       .addCase(logout.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isRejected = true;
+      });
+    builder
+      .addCase(fetchUserData.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUserData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload;
+      })
+      .addCase(fetchUserData.rejected, (state, action) => {
         state.isLoading = false;
         state.isRejected = true;
       });

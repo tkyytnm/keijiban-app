@@ -15,7 +15,7 @@ export const deleteCommentById = createAsyncThunk(
     const response = await fetch(`/api/comment/${id}`, {
       method: "DELETE",
     });
-    return response.json();
+    return await response.json();
   }
 );
 

@@ -17,9 +17,9 @@ module.exports = class User {
     }
   }
 
-  async updateUser(data) {
+  async updateUserProfile(data) {
     const { id, username, email } = data;
-    const text = `UPDATE users SET username=$2, email=$3, WHERE id=$1 RETURNING *`;
+    const text = `UPDATE users SET username=$2, email=$3 WHERE id=$1 RETURNING *`;
     const values = [id, username, email];
     try {
       const res = await db.query(text, values);
@@ -32,9 +32,10 @@ module.exports = class User {
     }
   }
 
-  async updateUserPassword(hashedPassword) {
+  async updateUserPassword(data) {
+    const { id, hash } = data;
     const text = `UPDATE users SET password=$2 WHERE id=$1 RETURNING *`;
-    const values = [hashedPassword];
+    const values = [id, hash];
     try {
       const res = await db.query(text, values);
       if (res.rows?.length) {

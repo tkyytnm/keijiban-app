@@ -5,6 +5,7 @@ import newThread from "../features/newThread/newThreadSlice";
 import comments from "../features/comments/commentsSlice";
 import newComment from "../features/newComment/newCommentSlice";
 import auth from "../features/auth/authSlice";
+import user from "../features/user/userSlice";
 import { loadState, saveState } from "./localStorage";
 
 const reducer = {
@@ -14,6 +15,7 @@ const reducer = {
   comments,
   newComment,
   auth,
+  user,
 };
 
 const persistedState = loadState();

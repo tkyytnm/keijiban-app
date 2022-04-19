@@ -21,7 +21,7 @@ function Menu() {
         </>
       )}
 
-      {user.id ? user.username : "未ログイン"}
+      {user.id ? <Link to="profile">{user.username}</Link> : "未ログイン"}
     </nav>
   );
 }
