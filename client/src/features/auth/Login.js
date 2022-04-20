@@ -12,7 +12,16 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(sendLoginData({ username: email, password })).then(navigate("/"));
+    dispatch(sendLoginData({ username: email, password }))
+      .unwrap()
+      .then((res) => {
+        if (res.id) {
+          navigate("/");
+        } else {
+          console.log(res);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

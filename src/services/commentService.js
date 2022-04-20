@@ -21,7 +21,7 @@ module.exports = class CommentService {
       });
       return res;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -30,7 +30,7 @@ module.exports = class CommentService {
       const res = await CommentModelInstance.getCommentsByThreadId(thread_id);
       return res;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -39,7 +39,7 @@ module.exports = class CommentService {
       const res = await CommentModelInstance.deleteComment(id);
       return res;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 };

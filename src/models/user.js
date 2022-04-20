@@ -13,7 +13,7 @@ module.exports = class User {
       }
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -28,7 +28,7 @@ module.exports = class User {
       }
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -43,7 +43,7 @@ module.exports = class User {
       }
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -57,7 +57,7 @@ module.exports = class User {
       }
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -71,7 +71,7 @@ module.exports = class User {
       }
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -85,7 +85,7 @@ module.exports = class User {
       }
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 };

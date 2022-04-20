@@ -23,7 +23,7 @@ module.exports = class AuthService {
 
       return res;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 };

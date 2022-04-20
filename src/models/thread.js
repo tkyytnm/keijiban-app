@@ -14,7 +14,7 @@ module.exports = class Thread {
       }
       return [];
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -29,7 +29,7 @@ module.exports = class Thread {
       }
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -44,7 +44,7 @@ module.exports = class Thread {
       }
       return [];
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -61,7 +61,7 @@ module.exports = class Thread {
       }
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -76,7 +76,7 @@ module.exports = class Thread {
       }
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -92,7 +92,7 @@ module.exports = class Thread {
       }
       return [];
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 };

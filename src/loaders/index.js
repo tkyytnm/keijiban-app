@@ -14,4 +14,9 @@ module.exports = (app) => {
   passportLoader(app);
   routesLoader(app);
   swaggerLoader(app);
+
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.send(err);
+  });
 };

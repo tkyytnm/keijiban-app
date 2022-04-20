@@ -18,7 +18,7 @@ module.exports = class Comment {
 
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -38,7 +38,7 @@ module.exports = class Comment {
 
       return [];
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -54,7 +54,7 @@ module.exports = class Comment {
       }
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -70,7 +70,7 @@ module.exports = class Comment {
       }
       return [];
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -86,7 +86,7 @@ module.exports = class Comment {
       }
       return [];
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 
@@ -103,7 +103,7 @@ module.exports = class Comment {
 
       return null;
     } catch (err) {
-      throw err;
+      return err;;
     }
   }
 };
