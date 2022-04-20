@@ -16,14 +16,6 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
-router.get("/login", (req, res, next) => {
-  try {
-    next(createError(401, req.session.messages));
-  } catch (err) {
-    next(err);
-  }
-});
-
 router.post(
   "/login",
   passport.authenticate("local", {
@@ -35,6 +27,14 @@ router.post(
     res.send(req.user);
   }
 );
+
+router.get("/login", (req, res, next) => {
+  try {
+    next(createError(401, req.session.messages));
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.post("/logout", (req, res) => {
   req.logout();

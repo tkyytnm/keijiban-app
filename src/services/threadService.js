@@ -9,7 +9,7 @@ module.exports = class ThreadService {
       const res = await ThreadModelInstance.getThreads();
       return res;
     } catch (err) {
-      return err;;
+      throw err;
     }
   }
 
@@ -18,7 +18,7 @@ module.exports = class ThreadService {
       const res = await ThreadModelInstance.getThreadById(id);
       return res;
     } catch (err) {
-      return err;;
+      throw err;
     }
   }
 
@@ -27,7 +27,7 @@ module.exports = class ThreadService {
       const res = await ThreadModelInstance.insertThread(data);
       return res;
     } catch (err) {
-      return err;;
+      throw err;
     }
   }
 
@@ -37,7 +37,7 @@ module.exports = class ThreadService {
       const res = await ThreadModelInstance.deleteThread(id);
       return res;
     } catch (err) {
-      return err;;
+      throw err;
     }
   }
 };

@@ -9,17 +9,22 @@ function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(
+    const response = await dispatch(
       sendRegisterData({
         username,
         email,
         password,
       })
-    ).then(navigate("/"));
+    ).unwrap();
+    if (response.id) {
+      navigate("/");
+    }
+    setErrorMessage(response.message);
   };
 
   return (
@@ -56,6 +61,7 @@ function Register() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        {errorMessage && <p>{errorMessage}</p>}
         <div>
           <button disabled={isLoading}>新規登録</button>
         </div>

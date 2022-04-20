@@ -20,7 +20,7 @@ module.exports = class UserService {
       const res = await UserModelInstance.updateUserProfile(data);
       return res;
     } catch (err) {
-      return err;;
+      throw err;
     }
   }
 
@@ -31,7 +31,7 @@ module.exports = class UserService {
       const res = await UserModelInstance.updateUserPassword({ ...data, hash });
       return res;
     } catch (err) {
-      return err;;
+      throw err;
     }
   }
 
@@ -48,7 +48,7 @@ module.exports = class UserService {
       const res = await UserModelInstance.deleteUser(id);
       return res;
     } catch (err) {
-      return err;;
+      throw err;
     }
   }
 
@@ -57,7 +57,7 @@ module.exports = class UserService {
       const res = await UserModelInstance.findUserById(id);
       return res;
     } catch (err) {
-      return err;;
+      throw err;
     }
   }
 };

@@ -2,6 +2,7 @@ const UserModel = require("../models/user.js");
 const userModelInstance = new UserModel();
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const createError = require("http-errors");
 
 module.exports = class AuthService {
   async createUser(data) {
@@ -10,7 +11,7 @@ module.exports = class AuthService {
       const user = await userModelInstance.findUserByEmail(email);
 
       if (user) {
-        throw new Error("The email already exists.");
+        throw createError(401, "This email already exists.");
       }
 
       // bcrypt
@@ -23,7 +24,7 @@ module.exports = class AuthService {
 
       return res;
     } catch (err) {
-      return err;;
+      throw err;
     }
   }
 };

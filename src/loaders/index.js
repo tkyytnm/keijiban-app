@@ -17,6 +17,9 @@ module.exports = (app) => {
 
   app.use((err, req, res, next) => {
     console.error(err.stack);
+    if (!err.statusCode) {
+      res.send({ message: "Something broken!" });
+    }
     res.send(err);
   });
 };

@@ -73,6 +73,8 @@ paths:
                     type: string
                   crated_at:
                     type: string
+          "401":
+            description: Incorrect username or password.
           default:
             description: Unexpected error.
   /api/auth/logout:
