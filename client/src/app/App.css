@@ -158,3 +158,20 @@ button.single {
   background-color: #ffbaba;
   border-radius: 5px;
 }
+
+.scroll-to-top {
+  opacity: 0.9;
+  position: fixed;
+  bottom: -100px;
+  right: 25px;
+  z-index: 20;
+  color: #035397;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.scroll-to-top.on {
+  bottom: 40px;
+}
