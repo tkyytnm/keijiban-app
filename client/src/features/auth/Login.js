@@ -7,26 +7,24 @@ function Login() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const isLoading = useSelector(selectIsLoading);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(sendLoginData({ username: email, password }))
-      .unwrap()
-      .then((res) => {
-        if (res.id) {
-          navigate("/");
-        } else {
-          console.log(res);
-        }
-      })
-      .catch((err) => console.log(err));
+    const response = await dispatch(
+      sendLoginData({ username: email, password })
+    ).unwrap();
+    if (response.id) {
+      navigate("/");
+    }
+    setErrorMessage(response[0]);
   };
 
   return (
     <>
-      <h1>Login</h1>
+      <h2>ログイン</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email</label>
@@ -39,7 +37,7 @@ function Login() {
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">パスワード</label>
           <input
             type="password"
             name="password"
@@ -48,6 +46,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <div>
           <button disabled={isLoading}>ログイン</button>
         </div>

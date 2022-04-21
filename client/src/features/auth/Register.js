@@ -29,15 +29,16 @@ function Register() {
 
   return (
     <>
-      <h1>Register</h1>
+      <h2>ユーザー登録</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">ユーザー名</label>
           <input
             type="username"
             name="username"
             id="username"
             required
+            maxLength="100"
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
@@ -48,20 +49,22 @@ function Register() {
             name="email"
             id="email"
             required
+            maxLength="100"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">パスワード</label>
           <input
             type="password"
             name="password"
             id="password"
             required
+            maxLength="100"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {errorMessage && <p>{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <div>
           <button disabled={isLoading}>新規登録</button>
         </div>

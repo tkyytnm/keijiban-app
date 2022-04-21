@@ -3,10 +3,10 @@ const router = express.Router();
 const UserService = require("../services/userService.js");
 const UserServiceInstance = new UserService();
 
-router.get("/", async (req, res, next) => {
-  // get users list
-  res.send("User List");
-});
+// router.get("/", async (req, res, next) => {
+//   // get users list
+//   res.send("User List");
+// });
 
 router.get("/:id", async (req, res, next) => {
   // get a user by ID

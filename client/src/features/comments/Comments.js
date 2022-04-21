@@ -33,13 +33,12 @@ function Comments({ threadId }) {
   }
 
   return (
-    <>
-      <div>Comments</div>
-      <ul>
-        {comments.map((comment) => {
-          return (
-            <li key={comment.id}>
-              {comment.comment_num}: {comment.body} {comment.username}{" "}
+    <ul>
+      {comments.map((comment) => {
+        return (
+          <li key={comment.id}>
+            <div className="sub">
+              {comment.comment_num}. 投稿者:{comment.username} 投稿日時:
               {comment.created_at}
               {user.id === comment.user_id ? (
                 <button
@@ -47,16 +46,17 @@ function Comments({ threadId }) {
                     handleDeleteButton(comment.id, comment.user_id)
                   }
                 >
-                  削除
+                  x
                 </button>
               ) : (
                 ""
               )}
-            </li>
-          );
-        })}
-      </ul>
-    </>
+            </div>
+            <div className="main">{comment.body}</div>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 

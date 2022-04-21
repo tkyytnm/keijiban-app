@@ -23,15 +23,16 @@ function NewThread() {
 
   return (
     <>
-      <h1>新規スレッド作成</h1>
+      <h2>新規スレッド作成</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="title">タイトル</label>
+          <label htmlFor="title">タイトル : </label>
           <input
             type="text"
             name="title"
             id="title"
             required
+            maxLength='50'
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>

@@ -6,6 +6,7 @@ const CommentModel = require("../models/comment.js");
 const CommentModelInstance = new CommentModel();
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const createError = require("http-errors");
 
 module.exports = class UserService {
   async updateProfile(data) {
@@ -14,7 +15,7 @@ module.exports = class UserService {
       const user = await UserModelInstance.findUserByEmail(email);
 
       if (user && email_old !== email) {
-        throw new Error("This email already exist.");
+        throw createError(401, "This email already exist.");
       }
 
       const res = await UserModelInstance.updateUserProfile(data);

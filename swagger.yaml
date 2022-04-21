@@ -40,7 +40,7 @@ paths:
                   created_at:
                     type: string
         "409":
-          description: email already exists.
+          description: Email already exists.
         default:
           description: Unexpected error.
   /api/auth/login:

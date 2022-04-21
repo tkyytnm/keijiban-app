@@ -1,9 +1,10 @@
 import Menu from "../menu/Menu.js";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header>
-      <h1>掲示板 App</h1>
+      <Link to="/"><h1>The 掲示板 App</h1></Link>
       <Menu />
     </header>
   );

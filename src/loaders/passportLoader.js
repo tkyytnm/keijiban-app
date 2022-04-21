@@ -24,7 +24,7 @@ module.exports = (app) => {
 
         if (!user) {
           return cb(null, false, {
-            message: "emailかパスワードが間違っています。",
+            message: "EmailかPasswordが間違っています。",
           });
         }
 
@@ -33,7 +33,7 @@ module.exports = (app) => {
 
         if (!match) {
           return cb(null, false, {
-            message: "emailかパスワードが間違っています。",
+            message: "EmailかPasswordが間違っています。",
           });
         }
 

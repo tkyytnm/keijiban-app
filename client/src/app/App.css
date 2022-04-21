@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&display=swap");
+
+a {
+  color: #035397;
+  text-decoration: none;
+}
+
+svg {
+  vertical-align: text-bottom;
+  height: 18px;
+  width: 18px;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+header {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header h1 {
+  text-align: center;
+  font-family: "Noto Sans JP", sans-serif;
+  color: #333333;
+}
+
+nav {
+  font-weight: bold;
+  color: #666;
+  margin: 40px;
+}
+nav a {
+  color: #666;
+}
+
+section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+ul {
+  padding: 0;
+  margin: 20px 0;
+  border-top: 1px solid #ccc;
+}
+
+ul li {
+  list-style-type: none;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+ul li .sub {
+  font-size: 14px;
+  color: #666;
+}
+
+ul li .sub button {
+  margin-left: 5px;
+  display: inline-block;
+  padding: 0px 5px;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #f44336;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px #b20600;
+}
+
+ul li .main {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+ul li .main a {
+  font-weight: bold;
+}
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+form div {
+  width: 90%;
+  display: block;
+  margin-top: 10px;
+  margin: 10px auto;
+}
+
+form textarea {
+  width: 100%;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+form input {
+  width: 100%;
+  padding: 5px;
+}
+
+form button {
+  width: 100%;
+  display: block;
+  margin: 20px auto;
+  padding: 5px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #2eb086;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px #146356;
+}
+
+button.single {
+  max-width: 450px;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  padding: 5px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #f44336;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px #b20600;
+}
+
+.resign {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.error-message {
+  width: 90%;
+  padding: 5px 10px;
+  color: #d8000c;
+  background-color: #ffbaba;
+  border-radius: 5px;
+}

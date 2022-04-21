@@ -8,9 +8,12 @@ function Logout() {
 
   return (
     <>
-      <h1>Logout</h1>
-      <button onClick={() => dispatch(logout()).then(navigate("/"))}>
-        ログアウト
+      <h2>ログアウト</h2>
+      <button
+        onClick={() => dispatch(logout()).then(navigate("/"))}
+        className="single"
+      >
+        ログアウトする
       </button>
     </>
   );

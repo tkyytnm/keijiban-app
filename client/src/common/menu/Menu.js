@@ -2,6 +2,7 @@ import "./Menu.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/auth/authSlice.js";
+import { BiUserCircle} from 'react-icons/bi';
 
 function Menu() {
   const user = useSelector(selectUser);
@@ -17,11 +18,11 @@ function Menu() {
       ) : (
         <>
           <Link to="login">ログイン</Link>
-          <Link to="register">新規登録</Link>
+          <Link to="register">ユーザー登録</Link>
         </>
       )}
 
-      {user.id ? <Link to="profile">{user.username}</Link> : "未ログイン"}
+      {user.id ? <Link to="profile"><BiUserCircle /> {user.username}</Link> : "未ログイン"}
     </nav>
   );
 }

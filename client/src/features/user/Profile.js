@@ -46,13 +46,17 @@ function Profile() {
   };
 
   const handleClickDeleteUser = () => {
-    dispatch(deleteUser(user.id)).then(dispatch(logout())).then(navigate("/"));
+    if (window.confirm("本当に退会しますか？")) {
+      dispatch(deleteUser(user.id))
+        .then(dispatch(logout()))
+        .then(navigate("/"));
+    }
   };
 
   return (
     <>
-      <h1>Profile</h1>
-      <h2>ユーザー情報変更</h2>
+      <h2>Profile</h2>
+      <h3>ユーザー情報変更</h3>
       <form onClick={handleSubmitProfile}>
         <div>
           <label htmlFor="username">ユーザー名</label>
@@ -61,6 +65,7 @@ function Profile() {
             id="username"
             name="username"
             required
+            maxLength="100"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -72,6 +77,7 @@ function Profile() {
             id="email"
             name="email"
             required
+            maxLength="100"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -80,7 +86,7 @@ function Profile() {
           <button disabled={isLoading}>変更する</button>
         </div>
       </form>
-      <h2>パスワード変更</h2>
+      <h3>パスワード変更</h3>
       <form onSubmit={handleSubmitPassword}>
         <div>
           <label htmlFor="password">パスワード</label>
@@ -89,6 +95,7 @@ function Profile() {
             id="password"
             name="password"
             required
+            maxLength="100"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
@@ -96,9 +103,11 @@ function Profile() {
           <button disabled={isLoading}>変更する</button>
         </div>
       </form>
-      <h2>退会</h2>
-      <p>退会すると、作成したスレッドやコメントが全て削除されます。</p>
-      <button onClick={handleClickDeleteUser}>退会する</button>
+      <h3>退会</h3>
+      <p className="resign">退会すると、作成したスレッドやコメントが全て削除されます。</p>
+      <button onClick={handleClickDeleteUser} className="single">
+        退会する
+      </button>
     </>
   );
 }

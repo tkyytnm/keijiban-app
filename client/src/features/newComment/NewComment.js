@@ -28,7 +28,6 @@ function Comment() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="body">コメント</label>
         <div>
           <textarea
             id="body"
@@ -38,9 +37,12 @@ function Comment() {
             onChange={(e) => setBody(e.target.value)}
             required
             value={body}
+            placeholder="新規コメント"
           />
         </div>
-        <button disabled={isLoading}>投稿する</button>
+        <div>
+          <button disabled={isLoading}>投稿する</button>
+        </div>
       </form>
     </>
   );

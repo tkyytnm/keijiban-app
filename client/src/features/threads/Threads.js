@@ -19,12 +19,12 @@ function Threads() {
   }
 
   return (
-    <ul>
+    <ul id="threads">
       {threads.map((thread) => {
         return (
           <li key={thread.id}>
-            {thread.id} <Link to={"thread/" + thread.id}>{thread.title}</Link>{" "}
-            {thread.username} {thread.created_at}
+            <div className="sub">{thread.id}. 作成者:{thread.username} 作成日時:{thread.created_at}</div>
+            <div className="main"><Link to={"thread/" + thread.id}>{thread.title}</Link></div>
           </li>
         );
       })}
