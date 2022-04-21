@@ -29,7 +29,7 @@ function Comments({ threadId }) {
   }, [dispatch, threadId]);
 
   if (isLoading) {
-    return <Skeleton count={10} />;
+    return <Skeleton count={8} height={82} />;
   }
 
   return (

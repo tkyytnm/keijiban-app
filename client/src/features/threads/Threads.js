@@ -15,7 +15,7 @@ function Threads() {
   }, [dispatch]);
 
   if (isLoading) {
-    return <Skeleton count={10} />;
+    return <Skeleton count={10} height={75} />;
   }
 
   return (

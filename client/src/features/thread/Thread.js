@@ -20,7 +20,7 @@ function Thread() {
 
   return (
     <>
-      <h2>{isLoading ? <Skeleton /> : thread.title}</h2>
+      <h2>{isLoading ? <Skeleton height={28} /> : thread.title}</h2>
       <Comments threadId={threadId} />
       <NewComment />
     </>
