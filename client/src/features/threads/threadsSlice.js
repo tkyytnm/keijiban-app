@@ -5,7 +5,8 @@ export const fetchThreads = createAsyncThunk(
   async () => {
     const response = await fetch("/api/thread");
     const body = await response.json();
-    return body;
+    const sorted = body.sort((a, b) => a.id - b.id);
+    return sorted;
   }
 );
 

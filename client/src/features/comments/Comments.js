@@ -35,11 +35,17 @@ function Comments({ threadId }) {
   return (
     <ul>
       {comments.map((comment) => {
+        const date = new Date(comment.created_at);
         return (
           <li key={comment.id}>
             <div className="sub">
-              {comment.comment_num}. 投稿者:{comment.username} 投稿日時:
-              {comment.created_at}
+              <span>{comment.comment_num}.</span>{" "}
+              <span>投稿者 : {comment.username}</span>{" "}
+              <span>
+                投稿日時 : {date.getFullYear()}年{date.getMonth() + 1}月
+                {date.getDate()}日{date.getHours()}時{date.getMinutes()}分
+                {date.getSeconds()}秒
+              </span>
               {user.id === comment.user_id ? (
                 <button
                   onClick={() =>

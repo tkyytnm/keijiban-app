@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendThreadData, selectIsLoading } from "./newThreadSlice";
 import { selectUser } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import { setFlashMessage } from "../../common/header/flashMessageSlice";
 
 function NewThread() {
   const dispatch = useDispatch();
@@ -12,13 +13,14 @@ function NewThread() {
   const [title, setTitle] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const response = await dispatch(
-      sendThreadData({ title, user_id: user.id })
-    ).unwrap();
-
-    navigate(`/thread/${response.id}`);
+    dispatch(sendThreadData({ title, user_id: user.id }))
+      .unwrap()
+      .then((res) => {
+        dispatch(setFlashMessage("新しいスレッドを作成しました。"));
+        navigate(`/thread/${res.id}`);
+      });
   };
 
   return (
@@ -32,7 +34,7 @@ function NewThread() {
             name="title"
             id="title"
             required
-            maxLength='50'
+            maxLength="50"
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>

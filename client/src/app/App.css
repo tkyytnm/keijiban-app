@@ -55,6 +55,13 @@ nav a {
   color: #666;
 }
 
+#flash-message {
+  color: #005555;
+  background-color: #B9F8D3;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
 section {
   max-width: 800px;
   margin: 0 auto;
@@ -76,6 +83,10 @@ ul li {
 ul li .sub {
   font-size: 14px;
   color: #666;
+}
+
+ul li .sub span {
+  margin-right: 10px;
 }
 
 ul li .sub button {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { sendLoginData, selectIsLoading } from "./authSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setFlashMessage } from "../../common/header/flashMessageSlice";
 
 function Login() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function Login() {
       sendLoginData({ username: email, password })
     ).unwrap();
     if (response.id) {
+      dispatch(setFlashMessage('ログインしました。'));
       navigate("/");
     }
     setErrorMessage(response[0]);

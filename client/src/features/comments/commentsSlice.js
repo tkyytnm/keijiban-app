@@ -5,7 +5,8 @@ export const fetchCommentsByThread = createAsyncThunk(
   async (threadId) => {
     const response = await fetch(`/api/comment/${threadId}`);
     const body = await response.json();
-    return body;
+    const sorted = body.sort((a, b) => a.id - b.id);
+    return sorted;
   }
 );
 

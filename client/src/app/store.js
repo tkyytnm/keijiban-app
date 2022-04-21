@@ -6,6 +6,7 @@ import comments from "../features/comments/commentsSlice";
 import newComment from "../features/newComment/newCommentSlice";
 import auth from "../features/auth/authSlice";
 import user from "../features/user/userSlice";
+import flashMessage from "../common/header/flashMessageSlice";
 import { loadState, saveState } from "./localStorage";
 
 const reducer = {
@@ -16,6 +17,7 @@ const reducer = {
   newComment,
   auth,
   user,
+  flashMessage,
 };
 
 const persistedState = loadState();

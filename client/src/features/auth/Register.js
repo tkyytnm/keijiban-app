@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendRegisterData, selectIsLoading } from "./authSlice";
 import { useNavigate } from "react-router-dom";
+import { setFlashMessage } from "../../common/header/flashMessageSlice";
 
 function Register() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function Register() {
       })
     ).unwrap();
     if (response.id) {
+      dispatch(setFlashMessage("ユーザー登録に成功しました。"));
       navigate("/");
     }
     setErrorMessage(response.message);

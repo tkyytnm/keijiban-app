@@ -8,6 +8,7 @@ import {
 } from "./userSlice";
 import { selectUser, fetchUserData, logout } from "../auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import { setFlashMessage } from "../../common/header/flashMessageSlice";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function Profile() {
       .unwrap()
       .then((res) => {
         dispatch(fetchUserData(res.id));
+        dispatch(setFlashMessage("ユーザー情報を変更しました。"));
       })
       .catch((err) => console.log(err));
   };
@@ -42,14 +44,21 @@ function Profile() {
         id: user.id,
         password,
       })
-    );
+    )
+      .unwrap()
+      .then(() => {
+        dispatch(setFlashMessage("パスワードを変更しました。"));
+      });
   };
 
   const handleClickDeleteUser = () => {
     if (window.confirm("本当に退会しますか？")) {
       dispatch(deleteUser(user.id))
         .then(dispatch(logout()))
-        .then(navigate("/"));
+        .then(() =>{ 
+          dispatch(setFlashMessage('退会処理が完了しました。'))
+          navigate("/")
+        });
     }
   };
 
@@ -57,7 +66,7 @@ function Profile() {
     <>
       <h2>Profile</h2>
       <h3>ユーザー情報変更</h3>
-      <form onClick={handleSubmitProfile}>
+      <form onSubmit={handleSubmitProfile}>
         <div>
           <label htmlFor="username">ユーザー名</label>
           <input
@@ -104,7 +113,9 @@ function Profile() {
         </div>
       </form>
       <h3>退会</h3>
-      <p className="resign">退会すると、作成したスレッドやコメントが全て削除されます。</p>
+      <p className="resign">
+        退会すると、作成したスレッドやコメントが全て削除されます。
+      </p>
       <button onClick={handleClickDeleteUser} className="single">
         退会する
       </button>
