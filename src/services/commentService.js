@@ -10,7 +10,7 @@ module.exports = class CommentService {
       );
 
       if (comment_num === null) {
-        comment_num = 0;
+        comment_num = 1;
       } else {
         comment_num++;
       }

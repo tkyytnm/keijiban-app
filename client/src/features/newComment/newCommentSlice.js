@@ -10,7 +10,8 @@ export const sendCommentData = createAsyncThunk(
       },
       body: JSON.stringify(data),
     });
-    return response.json();
+    const body = await response.json();
+    return body;
   }
 );
 

@@ -34,12 +34,10 @@ function Menu() {
           </>
         )}
 
-        {user.id ? (
+        {user.id && (
           <Link to="profile">
             <BiUserCircle /> {user.username}
           </Link>
-        ) : (
-          "未ログイン"
         )}
       </nav>
     </>

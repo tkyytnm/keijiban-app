@@ -50,15 +50,13 @@ function Thread() {
           <Link to="/register">ユーザー登録</Link>が必要です。
         </p>
       )}
-      {user.id === thread.user_id ? (
+      {user.id === thread.user_id && (
         <button
           className="single"
           onClick={() => handleDeleteButton(thread.id, thread.user_id)}
         >
           このスレッドを削除する
         </button>
-      ) : (
-        ""
       )}
     </>
   );

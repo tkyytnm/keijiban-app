@@ -46,7 +46,7 @@ function Comments({ threadId }) {
                 {date.getDate()}日{date.getHours()}時{date.getMinutes()}分
                 {date.getSeconds()}秒
               </span>
-              {user.id === comment.user_id ? (
+              {user.id === comment.user_id && (
                 <button
                   onClick={() =>
                     handleDeleteButton(comment.id, comment.user_id)
@@ -54,11 +54,16 @@ function Comments({ threadId }) {
                 >
                   x
                 </button>
-              ) : (
-                ""
               )}
             </div>
-            <div className="main">{comment.body}</div>
+            <div className="main">
+              {comment.body.split("\n").map((str) => (
+                <>
+                  {str}
+                  <br />
+                </>
+              ))}
+            </div>
           </li>
         );
       })}
