@@ -23,7 +23,6 @@ function Threads() {
     <ul id="threads">
       {threads.map((thread) => {
         const date = new Date(thread.created_at);
-        console.log(thread);
         return (
           <li key={thread.id}>
             <div className="sub">

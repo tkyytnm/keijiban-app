@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/auth/authSlice.js";
 import { BiUserCircle } from "react-icons/bi";
@@ -8,6 +8,7 @@ import { HiOutlineMenuAlt2 } from "react-icons/hi";
 function Menu() {
   const user = useSelector(selectUser);
   const [showMenu, setShowMenu] = useState("");
+  const location = useLocation();
 
   const handleShowMenu = () => {
     if (showMenu === "on") {
@@ -16,6 +17,12 @@ function Menu() {
       setShowMenu("on");
     }
   };
+
+  useEffect(() => {
+    if (location) {
+      setShowMenu("");
+    }
+  }, [location]);
 
   return (
     <>
