@@ -2,7 +2,7 @@ import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import { useState, useEffect } from "react";
 
 function Footer() {
-  const [showBtn, setShowBtn] = useState('');
+  const [showBtn, setShowBtn] = useState("");
 
   const scrollToTop = () => {
     window.scroll({
@@ -14,9 +14,9 @@ function Footer() {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 400) {
-        setShowBtn('on');
+        setShowBtn("on");
       } else {
-        setShowBtn('');
+        setShowBtn("");
       }
     });
   }, []);

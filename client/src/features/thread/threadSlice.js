@@ -9,6 +9,17 @@ export const fetchThreadById = createAsyncThunk(
   }
 );
 
+export const deleteThreadById = createAsyncThunk(
+  "thread/deleteThreadById",
+  async (id) => {
+    const response = await fetch(`/api/thread/${id}`, {
+      method: "DELETE",
+    });
+    const body = await response.json();
+    return body;
+  }
+);
+
 const threadSlice = createSlice({
   name: "thread",
   initialState: {
@@ -27,6 +38,18 @@ const threadSlice = createSlice({
         state.thread = action.payload;
       })
       .addCase(fetchThreadById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isRejected = true;
+      });
+      builder
+      .addCase(deleteThreadById.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteThreadById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.thread = action.payload;
+      })
+      .addCase(deleteThreadById.rejected, (state, action) => {
         state.isLoading = false;
         state.isRejected = true;
       });
