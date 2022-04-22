@@ -27,6 +27,7 @@ function Footer() {
         onClick={scrollToTop}
         className={"scroll-to-top " + showBtn}
       />
+      <footer>&copy; The 掲示板 App</footer>
     </>
   );
 }
