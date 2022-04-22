@@ -4,6 +4,7 @@ import { selectThreads, fetchThreads, selectIsLoading } from "./threadsSlice";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { MdOutlineModeComment } from "react-icons/md";
 
 function Threads() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function Threads() {
     <ul id="threads">
       {threads.map((thread) => {
         const date = new Date(thread.created_at);
+        console.log(thread);
         return (
           <li key={thread.id}>
             <div className="sub">
@@ -30,6 +32,9 @@ function Threads() {
                 作成日時 : {date.getFullYear()}年{date.getMonth() + 1}月
                 {date.getDate()}日{date.getHours()}時{date.getMinutes()}分
                 {date.getSeconds()}秒
+              </span>
+              <span>
+                <MdOutlineModeComment /> {thread.count}
               </span>
             </div>
             <div className="main">

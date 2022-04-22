@@ -2,9 +2,13 @@ const db = require("../db/index.js");
 
 module.exports = class Thread {
   async getThreads() {
-    const text = `SELECT t.*, u.username
-      FROM threads t, users u
-      WHERE t.user_id = u.id`;
+    const text = `SELECT t.*, u.username, COUNT(c)
+      FROM threads t
+      LEFT JOIN users u
+        ON t.user_id = u.id
+      LEFT JOIN comments c
+        ON t.id = c.thread_id
+      GROUP BY t.id, u.username`;
     const values = [];
 
     try {

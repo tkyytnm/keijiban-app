@@ -17,7 +17,6 @@ function FlashMessage() {
     }, 5000);
   }, [dispatch, flashMessage]);
 
-  console.log(flashMessage);
   return <>{visibility && <p id="flash-message">{flashMessage}</p>}</>;
 }
 
