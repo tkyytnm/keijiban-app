@@ -39,7 +39,7 @@ const commentsSlice = createSlice({
       })
       .addCase(fetchCommentsByThread.rejected, (state, action) => {
         state.isLoading = false;
-        state.isRejected = false;
+        state.isRejected = true;
       });
     builder
       .addCase(deleteCommentById.pending, (state, action) => {

@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "../test-utils";
+import App from "./App";
 
-test('renders learn react link', () => {
-  // render(<App />);
-  // const linkElement = screen.getByText(/learn react/i);
-  // expect(linkElement).toBeInTheDocument();
+test("renders title", async () => {
+  render(<App />);
+  const linkElement = screen.getAllByText(/掲示板/i);
+  expect(linkElement[0]).toBeInTheDocument();
+  expect(linkElement[1]).toBeInTheDocument();
+  expect(await screen.findByText(/Sample thread1/i)).toBeInTheDocument();
 });

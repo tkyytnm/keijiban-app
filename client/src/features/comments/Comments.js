@@ -9,6 +9,7 @@ import {
 import { selectUser } from "../auth/authSlice";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import parse from "html-react-parser";
 
 function Comments({ threadId }) {
   const dispatch = useDispatch();
@@ -52,17 +53,12 @@ function Comments({ threadId }) {
                     handleDeleteButton(comment.id, comment.user_id)
                   }
                 >
-                  x
+                  削除
                 </button>
               )}
             </div>
             <div className="main">
-              {comment.body.split("\n").map((str) => (
-                <>
-                  {str}
-                  <br />
-                </>
-              ))}
+              {parse(comment.body.split("\n").join("<br />"))}
             </div>
           </li>
         );
