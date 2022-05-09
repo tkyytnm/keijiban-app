@@ -10,16 +10,17 @@ module.exports = (app) => {
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
+  app.set("trust proxy", 1);
 
   passportLoader(app);
   routesLoader(app);
   swaggerLoader(app);
 
-  // app.use((err, req, res, next) => {
-  //   console.error(err.stack);
-  //   if (!err.statusCode) {
-  //     res.send({ message: "Something broken!" });
-  //   }
-  //   res.send(err);
-  // });
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    if (!err.statusCode) {
+      res.send({ message: "Something broken!" });
+    }
+    res.send(err);
+  });
 };
