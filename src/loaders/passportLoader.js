@@ -5,10 +5,6 @@ const UserModelInstance = new UserModel();
 const session = require("express-session");
 const { secret } = require("../configs/config.js").session;
 const bcrypt = require("bcrypt");
-const RedisStore = require("connect-redis")(session);
-const { createClient } = require("redis");
-const redisClient = createClient({ legacyMode: true });
-// redisClient.connect().catch(console.error);
 
 module.exports = (app) => {
   app.use(
@@ -16,7 +12,7 @@ module.exports = (app) => {
       secret: secret,
       resave: false,
       saveUninitialized: true,
-      store: new RedisStore({ client: redisClient }),
+
       cookie: {
         secure: false,
         maxAge: 24 * 60 * 60 * 1000,
