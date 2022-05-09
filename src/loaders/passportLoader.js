@@ -12,6 +12,10 @@ module.exports = (app) => {
       secret: secret,
       resave: false,
       saveUninitialized: true,
+      cookie: {
+        secure: true,
+        maxAge: 600000,
+      },
     })
   );
 
