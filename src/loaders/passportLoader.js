@@ -7,8 +7,8 @@ const { secret } = require("../configs/config.js").session;
 const bcrypt = require("bcrypt");
 const RedisStore = require("connect-redis")(session);
 const { createClient } = require("redis");
-let redisClient = createClient({ legacyMode: true });
-redisClient.connect().catch(console.error);
+const redisClient = createClient({ legacyMode: true });
+// redisClient.connect().catch(console.error);
 
 module.exports = (app) => {
   app.use(
