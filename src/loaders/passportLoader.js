@@ -13,8 +13,8 @@ module.exports = (app) => {
       resave: false,
       saveUninitialized: true,
       cookie: {
-        secure: true,
-        maxAge: 600000,
+        secure: false,
+        maxAge: 24 * 60 * 60 * 1000,
       },
     })
   );
