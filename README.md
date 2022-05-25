@@ -17,7 +17,3 @@
 - Redux
 - PostgreSQL
 - Passport.js　ほか
-
-## サンプルのリンク
-
-[https://keijiban-app-2022.herokuapp.com/](https://keijiban-app-2022.herokuapp.com/)
